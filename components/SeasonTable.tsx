@@ -43,9 +43,6 @@ const SeasonTable = ({ year, champ }: Props) => {
               season.map((race: Race, index) => {
                 const driverGivenName = race.Results[0].Driver.givenName;
                 const driverFamilyName = race.Results[0].Driver.familyName;
-                if (driverFamilyName === champ) {
-                  console.log(champ + " : " + driverFamilyName);
-                }
 
                 return (
                   <tr
