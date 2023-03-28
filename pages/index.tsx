@@ -5,13 +5,17 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 
+export type Champion = {
+  givenName: string;
+  familyName: string;
+};
 const Home = () => {
   const [selectedYear, setSelectedYear] = useState<string | undefined | null>(null);
-  const [champion, setChampion] = useState<string | undefined | null>(null);
+  const [champion, setChampion] = useState<Champion | undefined | null>(null);
 
   const callback = async (year: string | undefined) => {
     const champ = await getChampForYear(year!);
-    setChampion(champ.familyName);
+    setChampion(champ);
     setSelectedYear(year);
   };
 
@@ -48,8 +52,11 @@ const Home = () => {
             {selectedYear && champion && (
               <>
                 <div className="mx-auto max-w-2xl lg:text-center">
-                  <p className="my-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    {selectedYear} - {champion}
+                  <p className="my-4 text-3xl  tracking-tight text-gray-900 sm:text-4xl">
+                    {selectedYear} -{" "}
+                    <span className="font-bold">
+                      {champion.givenName} {champion.familyName}
+                    </span>
                   </p>
                 </div>
                 <SeasonTable year={selectedYear} champ={champion} />

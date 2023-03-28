@@ -1,3 +1,4 @@
+import { Champion } from "@/pages";
 import { getSeason } from "@/services/ergast.service";
 import { Race } from "@/types";
 import React, { useEffect, useState } from "react";
@@ -5,7 +6,7 @@ import LoadingIndicator from "./LoadingIndicator";
 
 type Props = {
   year: string;
-  champ: string;
+  champ: Champion;
 };
 
 const SeasonTable = ({ year, champ }: Props) => {
@@ -45,7 +46,7 @@ const SeasonTable = ({ year, champ }: Props) => {
                 const driverGivenName = race.Results[0].Driver.givenName;
                 const driverFamilyName = race.Results[0].Driver.familyName;
 
-                const isChamp = champ === driverFamilyName;
+                const isChamp = champ.familyName === driverFamilyName;
 
                 return (
                   <tr
