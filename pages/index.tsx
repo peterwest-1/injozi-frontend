@@ -1,11 +1,12 @@
 import RaceTable from "@/components/RaceTable";
 import SeasonTable from "@/components/SeasonTable";
 import { getChampForYear } from "@/services/ergast.service";
+import Head from "next/head";
 import { useState } from "react";
 
 const Home = () => {
   const [selectedYear, setSelectedYear] = useState<string | undefined | null>(null);
-  const [champion, setChampion] = useState(null);
+  const [champion, setChampion] = useState<string | undefined | null>(null);
 
   const callback = async (year: string | undefined) => {
     const champ = await getChampForYear(year!);
@@ -15,6 +16,10 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>F1 World Champs</title>
+        <meta property="og:title" content="F1 World Champs" key="title" />
+      </Head>
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">

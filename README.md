@@ -1,8 +1,12 @@
 # Injozi Frontend
 
-## My process
+## Requirements
 
-- Use the Ergast API in Postman to see the format and form of the response
+We would like for you to build your application to run on a docker container port 3000:3000.
+
+- We should be able to run compose up to build and test the application
+- The application needs to builds itself with all needed requirements installed.
+- Bonus points to build for Android and iOS as well
 
 ## Docker
 
