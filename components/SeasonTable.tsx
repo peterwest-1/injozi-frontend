@@ -44,17 +44,17 @@ const SeasonTable = ({ year, champ }: Props) => {
                 const driverGivenName = race.Results[0].Driver.givenName;
                 const driverFamilyName = race.Results[0].Driver.familyName;
 
+                const isChamp = champ === driverFamilyName;
+
                 return (
                   <tr
                     key={index}
-                    className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${
-                      champ === race.Results[0].Driver.familyName ? "bg-slate-200" : ""
-                    }`}
+                    className={` border-b dark:bg-gray-800 dark:border-gray-700 ${isChamp ? "bg-red-200" : "bg-white"}`}
                   >
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       {race.raceName}
                     </th>
-                    <td className={`px-6 py-4 ${champ === driverFamilyName ? "font-bold" : ""}`}>
+                    <td className={`px-6 py-4 ${isChamp ? "font-bold" : ""}`}>
                       {driverGivenName} {driverFamilyName}
                     </td>
                   </tr>
