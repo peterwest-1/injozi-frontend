@@ -1,33 +1,51 @@
 import RaceTable from "@/components/RaceTable";
 import SeasonTable from "@/components/SeasonTable";
+import { getChampForYear } from "@/services/ergast.service";
 import { useState } from "react";
 
 const Home = () => {
-  const [selectedYear, setSelectedYear] = useState("2005");
+  const [selectedYear, setSelectedYear] = useState<string | undefined | null>(null);
+  const [champion, setChampion] = useState(null);
+
+  const callback = async (year: string | undefined) => {
+    const champ = await getChampForYear(year!);
+    setChampion(champ.familyName);
+    setSelectedYear(year);
+  };
+
   return (
     <>
       <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">F1 Insights</p>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-              pulvinar et feugiat blandit at. In mi viverra elit nunc.
-            </p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-            <RaceTable />
-          </div>
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            F1 Insights
+          </h1>
+          <p className="my-4 text-2xl  tracking-tight text-gray-900 sm:text-4xl">World Champions</p>
         </div>
-      </div>
-      <br />
-      <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">2019</p>
+        <div className=" flex flex-row flex-grow justify-center  mx-32 ">
+          <div className="w-full mt-16 sm:mt-20 lg:mt-24 px-8">
+            <div className="mx-auto max-w-2xl lg:text-center">
+              <p className="my-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">World Champions</p>
+            </div>
+            <RaceTable selectYear={callback} />
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-            <SeasonTable year={"2019"} champ={"Hamilton"} />
+          <div className="w-full mt-16 sm:mt-20 lg:mt-24 px-8">
+            {!selectedYear && !champion && (
+              <p className="my-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Select a year from the column on the left
+              </p>
+            )}
+
+            {selectedYear && champion && (
+              <>
+                <div className="mx-auto max-w-2xl lg:text-center">
+                  <p className="my-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    {selectedYear} - {champion}
+                  </p>
+                </div>
+                <SeasonTable year={selectedYear} champ={champion} />
+              </>
+            )}
           </div>
         </div>
       </div>
