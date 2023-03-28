@@ -2,6 +2,7 @@ import RaceTable from "@/components/RaceTable";
 import SeasonTable from "@/components/SeasonTable";
 import { getChampForYear } from "@/services/ergast.service";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 
 const Home = () => {
@@ -21,11 +22,14 @@ const Home = () => {
         <meta property="og:title" content="F1 World Champs" key="title" />
       </Head>
       <div className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            F1 Insights
-          </h1>
-          <p className="my-4 text-2xl  tracking-tight text-gray-900 sm:text-4xl">World Champions</p>
+        <div className="flex flex-row align-middle justify-center gap-16 items-center mx-auto max-w-2xl lg:text-center">
+          <Image src="/f1.png" alt="f1 logo" width={256} height={256} />
+          <div className=" flex-col">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              F1 Insights
+            </h1>
+            <p className="my-4 text-2xl  tracking-tight text-gray-900 sm:text-4xl">World Champions</p>
+          </div>
         </div>
         <div className=" flex flex-row flex-grow justify-center  mx-32 ">
           <div className="w-full mt-16 sm:mt-20 lg:mt-24 px-8">
