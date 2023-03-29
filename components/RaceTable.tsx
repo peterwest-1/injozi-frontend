@@ -39,8 +39,8 @@ const RaceTable = (props: Props) => {
     <>
       <div>
         {!data && <LoadingIndicator />}
-        <table className="w-full text-sm  text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm  text-gray-500 ">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
             <tr>
               <th onClick={handleSortBySeason} scope="col" className="px-6 py-3">
                 Season {seasonSortingDescending ? <span>&#8595;</span> : <span>&#8593;</span>}
@@ -56,8 +56,8 @@ const RaceTable = (props: Props) => {
           <tbody>
             {!!data &&
               data.map((item: StandingsList, index) => (
-                <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <tr key={index} className="bg-white border-b ">
+                  <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {item.season}
                   </th>
                   <td className="px-6 py-4">

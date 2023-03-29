@@ -28,8 +28,8 @@ const SeasonTable = ({ year, champ }: Props) => {
             <LoadingIndicator />
           </div>
         )}
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-500 ">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
             <tr>
               <th scope="col" className="px-6 py-3"></th>
               <th scope="col" className="px-6 py-3">
@@ -49,19 +49,14 @@ const SeasonTable = ({ year, champ }: Props) => {
                 const isChamp = champ.familyName === driverFamilyName;
 
                 return (
-                  <tr
-                    key={index}
-                    className={`  ${
-                      isChamp ? "border-f1-red border" : "border-t"
-                    }  dark:bg-gray-800 dark:border-gray-700 `}
-                  >
+                  <tr key={index} className={`  ${isChamp ? "border-f1-red border" : "border-t"}  `}>
                     <th
                       scope="row"
-                      className={`w-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white ${
+                      className={`w-1 py-4 font-medium text-gray-900 whitespace-nowrap  ${
                         isChamp ? "bg-f1-red" : "bg-white"
                       }`}
                     ></th>
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                       {race.raceName}
                     </th>
                     <td className={`px-6 py-4 ${isChamp ? "font-bold" : ""}`}>

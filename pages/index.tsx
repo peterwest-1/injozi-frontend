@@ -29,7 +29,7 @@ const Home = () => {
         <div className="flex flex-row align-middle justify-center gap-16 items-center mx-auto max-w-2xl lg:text-center">
           <Image src="/f1.png" alt="f1 logo" width={256} height={256} />
           <div className=" flex-col">
-            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">
               F1 Insights
             </h1>
             <p className="my-4 text-2xl  tracking-tight text-gray-900 sm:text-4xl">World Champions</p>
